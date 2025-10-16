@@ -31,7 +31,7 @@ Tujuannya adalah untuk mengumpulkan data portofolio dari banyak peserta dan meny
 
 ## 🚀 Cara Penggunaan
 
-Berikut langkah-langkah untuk menyiapkan dan menjalankan skrip ini.
+## Berikut langkah-langkah untuk menyiapkan dan menjalankan skrip ini.
 
 ### 1️⃣ Prasyarat
 
@@ -43,6 +43,8 @@ Pastikan Anda sudah menginstal:
 ---
 
 ### 2️⃣ Instalasi
+
+---
 
 Clone repositori ini ke komputer lokal Anda:
 
@@ -58,7 +60,11 @@ pip install -r requirements.txt
 
 ```
 
-3️⃣ Konfigurasi (Langkah Paling Penting)
+---
+
+### 3️⃣ Konfigurasi (Langkah Paling Penting)
+
+---
 
 Sebelum menjalankan skrip, Anda wajib mengonfigurasi HEADERS untuk menyertakan token autentikasi.
 
@@ -86,7 +92,11 @@ Salin hasilnya dan tempel di file scrape_data.py, ganti isi dari variabel HEADER
 Token di dalam 'Authorization': 'Bearer ey...' memiliki masa berlaku terbatas.
 Jika skrip berhenti (misalnya error 401 Unauthorized), ulangi langkah di atas untuk memperbarui token.
 
-4️⃣ Jalankan Skrip
+---
+
+### 4️⃣ Jalankan Skrip
+
+---
 
 Setelah semua konfigurasi selesai, jalankan skrip dengan perintah:
 
@@ -102,7 +112,12 @@ Mengambil daftar ID peserta
 Mengambil detail portofolio tiap peserta secara paralel
 
 Menampilkan progress bar agar Anda tahu sejauh mana proses berjalan
-5️⃣ Hasil Output
+
+---
+
+### 5️⃣ Hasil Output
+
+---
 
 Setelah selesai, sebuah file bernama:
 
@@ -114,7 +129,9 @@ hasil_data_peserta.xlsx
 akan muncul di folder yang sama.
 File ini berisi data portofolio peserta dalam format tabel yang siap dianalisis menggunakan Excel, Power BI, atau alat analisis lainnya.
 
-📦 Dependensi Utama
+---
+
+### 📦 Dependensi Utama
 
 requests
 
@@ -128,12 +145,18 @@ concurrent.futures
 
 Semua sudah tercantum di file requirements.txt.
 
-💡 Kontribusi
+---
+
+### 💡 Kontribusi
+
+---
 
 Pull request dan perbaikan selalu diterima.
 Jika Anda ingin menambah fitur (misalnya logging, retry system, atau scraping tambahan), silakan buat branch baru dan ajukan PR.
 
-🧾 Lisensi
+---
+
+### 🧾 Lisensi
 
 Proyek ini dirilis di bawah lisensi MIT License — silakan digunakan dan dimodifikasi dengan tetap memperhatikan etika dan hukum yang berlaku.
 
