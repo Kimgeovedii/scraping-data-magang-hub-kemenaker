@@ -1,71 +1,52 @@
-# 🕵️‍♂️ Scraper Data Peserta MagangHub
+# MagangHub Scraper (Final Version)
 
-Skrip Python ini dirancang untuk melakukan **scraping data detail peserta** dari platform [MagangHub Kemnaker](https://maganghub.kemnaker.go.id/) secara otomatis.  
-Tujuannya adalah untuk **mengumpulkan data portofolio peserta** dan menyajikannya dalam satu file Excel yang rapi dan "rata" (flattened) untuk kemudahan analisis.
+## 📦 Struktur Folder
+```
+scraper-final/
+├── scrape_data.py
+├── config.py
+├── utils/
+│   ├── logger.py
+│   └── pagination.py
+├── logs/
+│   └── scraper.log
+├── requirements.txt
+└── README.md
+```
 
----
+## ⚙️ Persiapan
+1. Pastikan Python >= 3.9 sudah terinstall.
+2. Install dependensi:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## ✨ Fitur Utama
-- ⚡ **Scraping Paralel**: Menggunakan multithreading agar proses scraping jauh lebih cepat.  
-- 📊 **Output Excel**: Menghasilkan file `.xlsx` bersih dan mudah dibaca.  
-- ⚙️ **Konfigurasi Mudah**: Cukup ubah `HEADERS` & endpoint sesuai sesi login Anda.  
-- 📈 **Progress Bar**: Memantau progres scraping secara real-time dengan `tqdm`.
+3. Buka file `config.py` dan isi:
+   - `HEADERS['authorization']` → token Bearer kamu
+   - `MASTER_LIST_ENDPOINT` → endpoint peserta (tanpa page)
+     Contoh:
+     ```python
+     MASTER_LIST_ENDPOINT = "program-posisis/xxxxxx/program-pesertas?order_by=tanggal_daftar&order_direction=ASC&limit=150&per_page=150"
+     ```
 
----
-
-## 📚 Dokumentasi Lengkap
-
-| File | Deskripsi |
-|------|------------|
-| [docs/01_overview.md](docs/01_overview.md) | Gambaran umum proyek |
-| [docs/02_installation.md](docs/02_installation.md) | Panduan instalasi & dependensi |
-| [docs/03_configuration.md](docs/03_configuration.md) | Cara konfigurasi `HEADERS` |
-| [docs/04_usage.md](docs/04_usage.md) | Cara menjalankan skrip & hasil output |
-| [docs/05_warnings.md](docs/05_warnings.md) | Etika, batasan, dan peringatan penting |
-
----
-
-## 🚀 Quick Start
-
+## 🚀 Cara Menjalankan
 ```bash
-# Clone repository
-git clone https://github.com/Kimgeovedii/scraping-data-magang-hub-kemenaker.git
-
-cd scraping-data-magang-hub-kemenaker
-
-# Install dependensi
-pip install -r requirements.txt
-
-# Jalankan scraper
 python scrape_data.py
 ```
 
-Hasil scraping akan muncul di folder `output/` dengan nama:
+Data akan otomatis:
+- Mengambil semua halaman (pagination otomatis)
+- Membatasi kecepatan scraping dengan delay kecil (`RATE_LIMIT`)
+- Menyimpan hasil ke file `hasil_data_peserta.xlsx`
+- Menulis log detail ke `logs/scraper.log`
+
+## 🧾 Log Detail
+File `logs/scraper.log` berisi catatan proses seperti:
 ```
-hasil_data_peserta.xlsx
+2025-10-16 14:15:10 - INFO - Mengambil halaman 1: ...
+2025-10-16 14:15:11 - INFO - Berhasil ambil data pendidikan untuk user_id=abcd
+2025-10-16 14:15:15 - ERROR - Gagal ambil data sertifikasi untuk user_id=efgh: Timeout
 ```
 
----
-
-## ⚠️ Peringatan Penting
-> **Gunakan skrip ini secara etis dan bertanggung jawab.**
->
-> Data yang diambil memerlukan autentikasi. Pastikan Anda mematuhi hukum yang berlaku, termasuk **UU Pelindungan Data Pribadi (UU PDP)**.  
-> Skrip ini dibuat untuk **tujuan edukasi dan penelitian**, bukan untuk komersialisasi atau distribusi data.
-
----
-
-## 🧑‍💻 Kontribusi
-Pull Request sangat diterima!  
-Jika Anda ingin menambahkan fitur, dokumentasi, atau optimasi performa, silakan buat branch baru dan ajukan PR.
-
----
-
-## 🪪 Lisensi
-Proyek ini dilisensikan di bawah lisensi **MIT License** — silakan gunakan, modifikasi, dan distribusikan dengan tetap mencantumkan kredit.
-
----
-
-## 📬 Kontak
-**Author:** [Mohamad Mustofa Hakim](https://github.com/Kimgeovedii)  
-**Tujuan:** Edukasi & penelitian scraping data publik
+## 📤 Output
+Hasil akhir akan tersimpan di file `hasil_data_peserta.xlsx` dengan format sama seperti versi sebelumnya.
