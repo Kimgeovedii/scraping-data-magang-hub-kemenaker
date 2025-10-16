@@ -1,0 +1,5 @@
+log/*
+scraper.log
+.env
+hasil_data_peserta.xlsx
+__pycache__/*
